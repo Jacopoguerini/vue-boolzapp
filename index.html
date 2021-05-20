@@ -24,7 +24,7 @@
                     <div class="top">
                         <!-- profile -->
                         <div id="profile" class="top-left">
-                            <img src="img/avatar_io.jpg" alt="Profile Pic">
+                            <img :src="" alt="Profile Pic">
                             <span>{{ profile.name }}</span>
                         </div>
 
@@ -59,12 +59,22 @@
                         </div>
                     </div>
                     <!-- /search bar -->
+                    
+                    <!-- chat list -->
+                    <div class="chat-list">
+                        <div v-for="(contact, index) in contacts" >
+                            <img src="" alt="">
+                            <h3>{{ contact.name }}</h3>
+
+                        </div>
+                    </div>
+                    <!-- /chat list -->
                 </section>
             <!-- /chat list - left side -->
 
             <!-- conversation - right side -->
                 <section id="conversation">
-
+                    <img src="" alt="">
                 </section>
             <!-- /conversation - right side -->
         </main>

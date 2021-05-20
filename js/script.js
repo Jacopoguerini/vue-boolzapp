@@ -3,7 +3,7 @@ var app = new Vue ({
     data: {
         profile: {
             name: 'Nome Utente',
-            avatar: '_io'
+            avatar: '_io',
         },
         contacts: [
             {
@@ -89,6 +89,12 @@ var app = new Vue ({
                     }
                 ],
             },
-        ]
-    }
+        ],
+        activeChat: 0,
+    },
+    methods: {
+        getImage: function() {
+            return "img/" + this.element.avatar + ".jpg";
+        },
+    }    
 })
