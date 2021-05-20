@@ -8,6 +8,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!-- VUE JS -->
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600&display=swap" rel="stylesheet">
         <!-- CSS -->
         <link rel="stylesheet" href="css/style.css">
         <title>Boolzapp</title>
@@ -17,12 +20,45 @@
         <main id="root">
             <!-- chat list - left side-->
                 <section id="chat-list">
-                    <div id="account" class="top">
-                        <div id="profile">
+                    <!-- account and settings -->
+                    <div class="top">
+                        <!-- profile -->
+                        <div id="profile" class="top-left">
                             <img src="img/avatar_io.jpg" alt="Profile Pic">
-                            <span></span>
+                            <span>{{ profile.name }}</span>
+                        </div>
+
+                        <!-- settings -->
+                        <div class="top-right">
+                            <i class="fas fa-circle-notch"></i>
+                            <i class="fas fa-comment-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
                         </div>
                     </div>
+                    <!-- /account and settings -->
+
+                    <!-- notifications -->
+                    <div id="notifications">
+                        <!-- bell icon -->
+                        <div>
+                            <i class="fas fa-bell-slash"></i>
+                        </div>
+                        <!-- text -->
+                        <div>
+                            <span>Ricevi notifiche di nuovi messaggi</span>
+                            <span class="link">Attiva notifiche desktop</span>
+                        </div>
+                    </div>
+                    <!-- /notifications -->
+
+                    <!-- search bar -->
+                    <div class="search-container">
+                        <div class="search-bar">
+                            <i class="fa fa-search"></i>
+                            <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        </div>
+                    </div>
+                    <!-- /search bar -->
                 </section>
             <!-- /chat list - left side -->
 
@@ -33,5 +69,9 @@
             <!-- /conversation - right side -->
         </main>
         <!-- /main -->
+
+        <!-- script -->
+        <script src="js/script.js"></script>
+        <!-- /script -->
     </body>
 </html>
