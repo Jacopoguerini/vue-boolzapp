@@ -90,11 +90,11 @@ var app = new Vue ({
                 ],
             },
         ],
-        activeChat: 0,
+        activeIndex: 0,
     },
     methods: {
-        getImage: function() {
-            return "img/" + this.element.avatar + ".jpg";
+        getImage: function(avatarName) {
+            return "img/avatar" + avatarName + ".jpg";
         },
     }    
 })

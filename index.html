@@ -23,8 +23,8 @@
                     <!-- account and settings -->
                     <div class="top">
                         <!-- profile -->
-                        <div id="profile" class="top-left">
-                            <img :src="" alt="Profile Pic">
+                        <div id="profile" class="top-left profile">
+                            <img :src="getImage(profile.avatar)" alt="Profile Pic">
                             <span>{{ profile.name }}</span>
                         </div>
 
@@ -40,7 +40,7 @@
                     <!-- notifications -->
                     <div id="notifications">
                         <!-- bell icon -->
-                        <div>
+                        <div id="notifications-btn">
                             <i class="fas fa-bell-slash"></i>
                         </div>
                         <!-- text -->
@@ -62,10 +62,11 @@
                     
                     <!-- chat list -->
                     <div class="chat-list">
-                        <div v-for="(contact, index) in contacts" >
-                            <img src="" alt="">
+                        <div v-for="(contact, index) in contacts" class="convo">
+                            <img :src="getImage(contact.avatar)" alt="">
                             <h3>{{ contact.name }}</h3>
-
+                            <h5> {{  }}</h5>
+                            <span class="date"></span>
                         </div>
                     </div>
                     <!-- /chat list -->
@@ -74,7 +75,43 @@
 
             <!-- conversation - right side -->
                 <section id="conversation">
-                    <img src="" alt="">
+                    <!-- active conversation profile -->
+                    <div id="active-chat" class="top">
+                        <div class="top-left">
+                            <img :src="getImage(contacts[activeIndex].avatar)" alt="">
+                            <div class="contact-convo">
+                                <h3>{{ contacts[activeIndex].name }}</h3>
+                                <h5>Ultimo accesso "" alle ""</h5>
+                            </div>
+                        </div>
+
+                        <div class="top-right">
+                            <i class="fas fa-circle-notch"></i>
+                            <i class="fas fa-comment-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+                    <!-- active conversation profile -->
+
+                    <!-- chat -->
+                    <div id="chat">
+                        <div class="message sent">
+                            <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis ut voluptas quasi earum molestiae accusantium quisquam hic tempora aut aperiam nemo quod reprehenderit nulla maiores, itaque odio amet, et facilis.</span>
+                        </div>
+                        <div class="message received">
+                            <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis ut voluptas quasi earum molestiae accusantium quisquam hic tempora aut aperiam nemo quod reprehenderit nulla maiores, itaque odio amet, et facilis.</span>
+                        </div>
+                    </div>
+                    <!-- /chat -->
+
+                    <!-- writing bar -->
+                    <div class="writing-bar">
+                        <i class="far fa-smile"></i>
+                        <input type="text" placeholder="Scrivi un messaggio">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <!-- /writing bar -->
+
                 </section>
             <!-- /conversation - right side -->
         </main>
