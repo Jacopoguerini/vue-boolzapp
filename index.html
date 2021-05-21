@@ -102,7 +102,7 @@
                     <div id="chat">
                         <div v-for="message in contacts[activeIndex].messages" :class="(message.status == 'sent') ? 'sent' : 'received'"class="message">
                             <p>{{ message.text }}</p>
-                            <span class="date">{{ message.date }}</span>
+                            <span class="date">{{ msgTime(contacts[activeIndex]) }}</span>
                         </div>
                     </div>
                     <!-- /chat -->
@@ -110,7 +110,7 @@
                     <!-- writing bar -->
                     <div class="writing-bar">
                         <i class="far fa-smile"></i>
-                        <input type="text" placeholder="Scrivi un messaggio">
+                        <input type="text" placeholder="Scrivi un messaggio" @keydown.enter="sendMessage()">
                         <i class="fas fa-microphone"></i>
                     </div>
                     <!-- /writing bar -->

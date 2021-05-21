@@ -107,10 +107,21 @@ var app = new Vue ({
         },
         getTime: function(contact) {
             return this.getLastMessage(contact).date.substring(11, 19);
-        }        
-        // dayString: function() {
-        //     let today = dayjs().format('DD/MM/YYYY');
-        //     if 
-        // }
+        },  
+        msgTime: function(contact) {
+            return this.getLastMessage(contact).date.substring(11, 17);
+        },       
+        sendMessage: function() {
+            // console.log(this.newToDrink);
+            let now = new Date().toString;
+            let newMsg = {
+                date: now,
+                text: '',
+                status: 'sent'
+            }
+            if(newMsg.text.trim().length > 0) {
+                this.contacts[activeIndex].messages.push(newMsg);
+            };
+        }
     }  
 })
