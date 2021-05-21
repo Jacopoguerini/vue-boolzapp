@@ -92,6 +92,23 @@ var app = new Vue ({
         ],
         activeIndex: 0,
     },
+    computed: {
+        lastMsgDate_received: function () {
+            let index = this.activeIndex;
+            let contact =  this.contacts[index];
+            let message = contact.messages;
+
+            // for (invertito) sulla chat attiva
+            // al primo if (status == received) return della data formattata
+
+            for (let i = contact.messages.length - 1; i = 0; i--) {
+                if (contact.messages.status == 'received') {
+                    let date = contact.messages.date;
+                }
+            }
+            return this.date;
+        }
+    },
     methods: {
         getImage: function(avatarName) {
             return "img/avatar" + avatarName + ".jpg";
@@ -133,3 +150,5 @@ var app = new Vue ({
 
     }  
 })
+
+console.log(this.lastMsgDate_received);
