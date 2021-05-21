@@ -96,5 +96,20 @@ var app = new Vue ({
         getImage: function(avatarName) {
             return "img/avatar" + avatarName + ".jpg";
         },
-    }    
+        getLastMessage: function(contact) {
+            return contact.messages[contact.messages.length - 1];
+        },
+        setActive: function(newIndex) {
+            this.activeIndex = newIndex;
+        },
+        getDay: function(contact) {
+            return this.getLastMessage(contact).date.substring(0, 10);
+        },
+        getTime: function(contact) {
+            return this.getLastMessage(contact).date.substring(11, 19);
+        },
+        getConversation: function(contact) {
+            
+        }
+    }  
 })

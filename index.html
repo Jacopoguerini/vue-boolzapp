@@ -62,11 +62,14 @@
                     
                     <!-- chat list -->
                     <div class="chat-list">
-                        <div v-for="(contact, index) in contacts" class="convo">
-                            <img :src="getImage(contact.avatar)" alt="">
-                            <h3>{{ contact.name }}</h3>
-                            <h5> {{  }}</h5>
-                            <span class="date"></span>
+                        <div v-for="(contact, index) in contacts" class="convo" 
+                        :class="(index == activeIndex) ? 'active-chat' : ''" @click="setActive(index)">
+                            <img :src="getImage(contact.avatar)" alt="contact.name">
+                            <div class="contact">
+                                <h3>{{ contact.name }}</h3>
+                                <h5 class="last-message"> {{ getLastMessage(contact).text }}</h5>
+                            </div>
+                            <span class="date">{{ getLastMessage(contact).date }}</span>
                         </div>
                     </div>
                     <!-- /chat list -->
@@ -76,12 +79,12 @@
             <!-- conversation - right side -->
                 <section id="conversation">
                     <!-- active conversation profile -->
-                    <div id="active-chat" class="top">
+                    <div class="top">
                         <div class="top-left">
                             <img :src="getImage(contacts[activeIndex].avatar)" alt="">
-                            <div class="contact-convo">
+                            <div class="main-convo">
                                 <h3>{{ contacts[activeIndex].name }}</h3>
-                                <h5>Ultimo accesso "" alle ""</h5>
+                                <h5>Ultimo accesso il {{ getDay(contacts[activeIndex]) }} alle {{ getTime(contacts[activeIndex]) }}</h5>
                             </div>
                         </div>
 
@@ -96,10 +99,10 @@
                     <!-- chat -->
                     <div id="chat">
                         <div class="message sent">
-                            <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis ut voluptas quasi earum molestiae accusantium quisquam hic tempora aut aperiam nemo quod reprehenderit nulla maiores, itaque odio amet, et facilis.</span>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis ut voluptas quasi earum molestiae accusantium quisquam hic tempora aut aperiam nemo quod reprehenderit nulla maiores, itaque odio amet, et facilis.
                         </div>
                         <div class="message received">
-                            <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis ut voluptas quasi earum molestiae accusantium quisquam hic tempora aut aperiam nemo quod reprehenderit nulla maiores, itaque odio amet, et facilis.</span>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis ut voluptas quasi earum molestiae accusantium quisquam hic tempora aut aperiam nemo quod reprehenderit nulla maiores, itaque odio amet, et facilis.
                         </div>
                     </div>
                     <!-- /chat -->

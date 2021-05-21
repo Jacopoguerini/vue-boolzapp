@@ -65,6 +65,9 @@ i {
 }
 
 /* chat list */
+#chat-list .top:first-child {
+ border-right: 1px solid #b1b1b1;
+}
 /* profile */
 #profile > * {
     margin: 0 5px;
@@ -163,25 +166,45 @@ i {
     padding: 5px 15px;
     border-bottom: 1px solid lightgray;
     cursor: pointer;
+    position: relative;
 }
 .convo img {
     width: 50px;
     margin-right: 15px;
 }
-
-/* active chat */
-#active-chat {
-    border-left: 1px solid #b1b1b1;
+.convo .date {
+    color: #b1b1b1;
+    font-size: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
-.contact-convo {
+.contact h5 {
+    font-size: 12px;
+    font-weight: 400;
+    color: #b1b1b1;
+    display: inline-block;
+    width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.active-chat {
+    background-color: #e9ebeb;
+    
+}
+
+/* main chat */
+.main-convo {
     margin: 0 10px;
 }
-.contact-convo > h3 {
+.main-convo > h3 {
     font-size: 15px;
     font-weight: 600;
 }
-.contact-convo > h5 {
+.main-convo > h5 {
     padding-top: 2px;
     color: grey;
     font-size: 10px;
@@ -201,14 +224,17 @@ i {
     max-width: 200px;
     margin-bottom: 8px;
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 5px;
     font-size: 15px;
+    clear: both;
 }
 .sent {
     background-color: #d5f9ba;
+    float: right;
 }
 .received {
     background-color: white;
+    float: left;
 }
 
 /* writing bar */
@@ -224,6 +250,7 @@ i {
     height: 70%;
     border: none;
     box-shadow: 0 0 2px lightgray;
+    padding-left: 15px;
 }
 .writing-bar input::placeholder {
     color: grey;
