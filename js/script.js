@@ -108,8 +108,10 @@ var app = new Vue ({
         getTime: function(contact) {
             return this.getLastMessage(contact).date.substring(11, 19);
         },
-        getConversation: function(contact) {
-            
-        }
+        
+        // dayString: function() {
+        //     let today = dayjs().format('DD/MM/YYYY');
+        //     if 
+        // }
     }  
 })
