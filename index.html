@@ -100,10 +100,9 @@
 
                     <!-- chat -->
                     <div id="chat">
-                        <div v-for="message in contacts.messages" class="message">
-                        </div>
-                        <div class="message received">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis ut voluptas quasi earum molestiae accusantium quisquam hic tempora aut aperiam nemo quod reprehenderit nulla maiores, itaque odio amet, et facilis.
+                        <div v-for="message in contacts[activeIndex].messages" :class="(message.status == 'sent') ? 'sent' : 'received'"class="message">
+                            <p>{{ message.text }}</p>
+                            <span class="date">{{ message.date }}</span>
                         </div>
                     </div>
                     <!-- /chat -->

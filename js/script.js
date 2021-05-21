@@ -45,7 +45,7 @@ var app = new Vue ({
                     },
                     {
                         date: '20/03/2020 16:35:00',
-                        text: 'Mi piacerebbe ma devo andare a fare la spesa.',
+                        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus quidem eveniet quos error corrupti exercitationem distinctio praesentium, sint et ipsa molestiae nobis odio autem facere dolore rem consequatur doloribus officiis?',
                         status: 'sent'
                     }
                 ],
@@ -107,8 +107,7 @@ var app = new Vue ({
         },
         getTime: function(contact) {
             return this.getLastMessage(contact).date.substring(11, 19);
-        },
-        
+        }        
         // dayString: function() {
         //     let today = dayjs().format('DD/MM/YYYY');
         //     if 
