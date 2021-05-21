@@ -7,7 +7,6 @@
 
 body {
     height: 100vh;
-    /* background-color: red; */
     background: linear-gradient(#009688 0%, #009688 15%, #dbdbd3 15%, #dbdbd3 100%);
     position: relative;
     font-family: 'Arimo', sans-serif;

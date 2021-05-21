@@ -108,20 +108,28 @@ var app = new Vue ({
         getTime: function(contact) {
             return this.getLastMessage(contact).date.substring(11, 19);
         },  
-        msgTime: function(contact) {
-            return this.getLastMessage(contact).date.substring(11, 17);
-        },       
-        sendMessage: function() {
-            // console.log(this.newToDrink);
-            let now = new Date().toString;
+        msgTime: function(message) {
+            return message.date.substring(11, 17);
+        },
+        sendMessage: function(event) {
+            let now = dayjs();
             let newMsg = {
-                date: now,
-                text: '',
+                date: now.format("DD/MM/YYYY H:mm:ss"),
+                text: event.target.value,
                 status: 'sent'
             }
             if(newMsg.text.trim().length > 0) {
-                this.contacts[activeIndex].messages.push(newMsg);
+                this.contacts[this.activeIndex].messages.push(newMsg);
+                event.target.value = "";
             };
+        },
+        lastAccess: function(contact) {
+            let activeContact = this.contacts[this.activeIndex];
+            let lastMsg = getLastMessage(activeContact);
+            if (lastMsg.status == 'received') {
+                return lastMsg.date;
+            }
         }
+
     }  
 })
