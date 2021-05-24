@@ -93,17 +93,16 @@ var app = new Vue ({
         activeIndex: 0,
     },
     computed: {
-        lastMsgDate_received: function () {
-            let index = this.activeIndex;
-            let contact =  this.contacts[index];
-            let message = contact.messages;
+        lastMsgDateReceived: function () {
+            let toRet;
+            const messages = this.contacts[this.activeIndex].messages;
 
-            for (let i = contact.messages.length - 1; i = 0; i--) {
-                if (contact.messages.status == 'received') {
-                    let date = contact.messages.date;
+            for (let i = messages.length - 1; i = 0; i--) {
+                if (messages[i].status == 'received') {
+                    toRet = messages[i].date;
                 }
             }
-            return this.date;
+            return toRet;
         }
     },
     methods: {
@@ -126,8 +125,8 @@ var app = new Vue ({
             return message.date.substring(11, 17);
         },
         sendMessage: function(event) {
-            let now = dayjs();
-            let newMsg = {
+            const now = dayjs();
+            const newMsg = {
                 date: now.format("DD/MM/YYYY H:mm:ss"),
                 text: event.target.value,
                 status: 'sent'
@@ -136,15 +135,13 @@ var app = new Vue ({
                 this.contacts[this.activeIndex].messages.push(newMsg);
                 event.target.value = "";
             };
-        },
-        newMessage: function () {
-            let answer = this.contacts[this.activeIndex].messages.push({date: dayjs().format('H:mm'), text:"Ok", status:'received'});
-            return answer;
-        },
-        bot: function() {
-             let bot = this;
-            setTimeout(function(){ 
-                bot.newMessage();
+            setTimeout(() => {
+                const response = {
+                    date: now.format("DD/MM/YYYY H:mm:ss"),
+                    text: "Ok",
+                    status: 'received'
+                }
+                this.contacts[this.activeIndex].messages.push(response);
             }, 1000);
         }
     }  
