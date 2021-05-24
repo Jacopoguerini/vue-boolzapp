@@ -98,9 +98,6 @@ var app = new Vue ({
             let contact =  this.contacts[index];
             let message = contact.messages;
 
-            // for (invertito) sulla chat attiva
-            // al primo if (status == received) return della data formattata
-
             for (let i = contact.messages.length - 1; i = 0; i--) {
                 if (contact.messages.status == 'received') {
                     let date = contact.messages.date;
@@ -140,15 +137,15 @@ var app = new Vue ({
                 event.target.value = "";
             };
         },
-        lastAccess: function(contact) {
-            let activeContact = this.contacts[this.activeIndex];
-            let lastMsg = getLastMessage(activeContact);
-            if (lastMsg.status == 'received') {
-                return lastMsg.date;
-            }
+        newMessage: function () {
+            let answer = this.contacts[this.activeIndex].messages.push({date: dayjs().format('H:mm'), text:"Ok", status:'received'});
+            return answer;
+        },
+        bot: function() {
+             let bot = this;
+            setTimeout(function(){ 
+                bot.newMessage();
+            }, 1000);
         }
-
     }  
 })
-
-console.log(this.lastMsgDate_received);

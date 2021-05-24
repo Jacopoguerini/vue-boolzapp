@@ -112,7 +112,8 @@
                     <!-- writing bar -->
                     <div class="writing-bar">
                         <i class="far fa-smile"></i>
-                        <input type="text" placeholder="Scrivi un messaggio" @keydown.enter="sendMessage">
+                        <input type="text" placeholder="Scrivi un messaggio" @keydown.enter="sendMessage"
+                        @keyup="bot">
                         <i class="fas fa-microphone"></i>
                     </div>
                     <!-- /writing bar -->
