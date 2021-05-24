@@ -45,7 +45,7 @@ var app = new Vue ({
                     },
                     {
                         date: '20/03/2020 16:35:00',
-                        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus quidem eveniet quos error corrupti exercitationem distinctio praesentium, sint et ipsa molestiae nobis odio autem facere dolore rem consequatur doloribus officiis?',
+                        text: 'Massì, si può fare',
                         status: 'sent'
                     }
                 ],
@@ -73,7 +73,7 @@ var app = new Vue ({
                 ],
             },
             {
-                name: 'Luisa',
+                name: 'Alberto',
                 avatar: '_4',
                 visible: true,
                 messages: [
@@ -89,21 +89,97 @@ var app = new Vue ({
                     }
                 ],
             },
+            {
+                name: 'Federico',
+                avatar: '_5',
+                visible: true,
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        text: 'Hai dormito bene?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 15:50:00',
+                        text: 'Abbastanza',
+                        status: 'received'
+                    }
+                ],
+            },
+            {
+                name: 'Claudia',
+                avatar: '_6',
+                visible: true,
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        text: 'Andiamo a farci un giro?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 15:50:00',
+                        text: 'Ci sto, facciamolo',
+                        status: 'received'
+                    },
+                    {
+                        date: '10/01/2020 16:02:45',
+                        text: 'Per che ora passo a prenderti?',
+                        status: 'sent'
+                    }
+                ],
+            },
+            {
+                name: 'Giovanni',
+                avatar: '_7',
+                visible: true,
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        text: 'Lo sai che ha aperto una nuova pizzeria?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 15:50:00',
+                        text: 'Si, ma preferirei andare al cinema',
+                        status: 'received'
+                    },
+                    {
+                        date: '10/01/2020 16:02:45',
+                        text: 'Cosa vuoi vedere',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 16:05:00',
+                        text: 'Non so, scegli tu',
+                        status: 'received'
+                    },
+                ],
+            },
+            {
+                name: 'Simone',
+                avatar: '_8',
+                visible: true,
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        text: 'Hai chiamato il dottore?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 15:50:00',
+                        text: 'Si, ho preso appuntamento settimana prossima',
+                        status: 'received'
+                    },
+                    {
+                        date: '10/01/2020 15:55:28',
+                        text: 'Bravo',
+                        status: 'sent'
+                    },
+                ],
+            } 
         ],
         activeIndex: 0,
-    },
-    computed: {
-        lastMsgDateReceived: function () {
-            let toRet;
-            const messages = this.contacts[this.activeIndex].messages;
-
-            for (let i = messages.length - 1; i = 0; i--) {
-                if (messages[i].status == 'received') {
-                    toRet = messages[i].date;
-                }
-            }
-            return toRet;
-        }
+        search: ''
     },
     methods: {
         getImage: function(avatarName) {
@@ -144,5 +220,29 @@ var app = new Vue ({
                 this.contacts[this.activeIndex].messages.push(response);
             }, 1000);
         }
-    }  
+    },
+    computed: {
+        lastMsgDateReceived: function () {
+            let toRet;
+            const messages = this.contacts[this.activeIndex].messages;
+
+            for (let i = messages.length - 1; i = 0; i--) {
+                if (messages[i].status == 'received') {
+                    toRet = messages[i].date;
+                }
+            }
+            return toRet;
+        },
+        filteredContacts: function (){
+            const contact = this.contacts;
+            return contact.filter((chat) => {
+                return chat.name.toLowerCase().match(this.search.toLowerCase());
+            });
+        }
+    },
+    updated: function () {
+        const messageList = document.getElementsByClassName("message");
+        const lastMessage = messageList[messageList.length - 1];
+        lastMessage.scrollIntoView();
+    }
 })
