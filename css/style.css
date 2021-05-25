@@ -230,6 +230,9 @@ i {
     clear: both;
     position: relative;
 }
+.message:hover .fa-chevron-down {
+    display: inline;
+}
 .sent {
     background-color: #d5f9ba;
     float: right;
@@ -251,6 +254,29 @@ i {
     font-size: 10px;
     margin: 3px 5px;
     color: #b1b1b1;
+}
+
+.fa-chevron-down {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: white;
+    z-index: 1000;
+}
+.dropdown span {
+    display: block;
+}
+.show {
+    display: block;
 }
 
 /* writing bar */

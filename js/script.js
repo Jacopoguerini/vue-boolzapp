@@ -179,7 +179,8 @@ var app = new Vue ({
             } 
         ],
         activeIndex: 0,
-        search: ''
+        search: '',
+        show: false
     },
     methods: {
         getImage: function(avatarName) {
@@ -198,7 +199,7 @@ var app = new Vue ({
             return this.getLastMessage(contact).date.substring(11, 19);
         },  
         msgTime: function(message) {
-            return message.date.substring(11, 17);
+            return message.date.substring(11, 16);
         },
         sendMessage: function(event) {
             const now = dayjs();
@@ -219,10 +220,14 @@ var app = new Vue ({
                 }
                 this.contacts[this.activeIndex].messages.push(response);
             }, 1000);
+        },
+        toggle: function() {
+            this.show = !this.show;
         }
     },
     computed: {
-        lastMsgDateReceived: function () {
+        // purtroppo non funzionante
+        lastMsgDateReceived: function() {
             let toRet;
             const messages = this.contacts[this.activeIndex].messages;
 
@@ -233,7 +238,7 @@ var app = new Vue ({
             }
             return toRet;
         },
-        filteredContacts: function (){
+        filteredContacts: function(){
             const contact = this.contacts;
             return contact.filter((chat) => {
                 return chat.name.toLowerCase().match(this.search.toLowerCase());
