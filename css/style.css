@@ -271,10 +271,23 @@ i {
     right: 0;
     background-color: white;
     z-index: 1000;
+    border-radius: 2px;
+    box-shadow: 0 0 3px lightgray;
 }
 .dropdown span {
     display: block;
+    padding: 10px;
+    font-size: 12px;
 }
+.dropdown span:first-of-type {
+    border-bottom: 1px solid #b1b1b1;
+}
+.dropdown span:hover {
+    cursor: pointer;
+    background-color: lightgray;
+    
+}
+
 .show {
     display: block;
 }
