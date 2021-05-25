@@ -102,8 +102,8 @@
                     <div id="chat">
                         <div v-for="message in contacts[activeIndex].messages" :class="(message.status == 'sent') ? 'sent' : 'received'" class="message">
                             <p>{{ message.text }}</p>
-                            <i class="fas fa-chevron-down" @click="toggle"></i>
-                            <div id="option-toggle" class="dropdown" v-if="show">
+                            <i class="fas fa-chevron-down" @click="toggle(index)"></i>
+                            <div id="option-toggle" class="dropdown" v-if="show" v-show="msgIndex == index">
                                 <span>Message info</span>
                                 <span>Delete message</span>
                             </div>

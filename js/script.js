@@ -180,7 +180,8 @@ var app = new Vue ({
         ],
         activeIndex: 0,
         search: '',
-        show: false
+        show: false,
+        msgIndex: 0
     },
     methods: {
         getImage: function(avatarName) {
@@ -221,7 +222,8 @@ var app = new Vue ({
                 this.contacts[this.activeIndex].messages.push(response);
             }, 1000);
         },
-        toggle: function() {
+        toggle: function(index) {
+            this.msgIndex = index;
             this.show = !this.show;
         }
     },
