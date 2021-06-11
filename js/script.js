@@ -212,15 +212,16 @@ var app = new Vue ({
             if(newMsg.text.trim().length > 0) {
                 this.contacts[this.activeIndex].messages.push(newMsg);
                 event.target.value = "";
+                setTimeout(() => {
+                    const response = {
+                        date: now.format("DD/MM/YYYY H:mm:ss"),
+                        text: "Ok",
+                        status: 'received'
+                    }
+                    this.contacts[this.activeIndex].messages.push(response);
+                }, 1000);
             };
-            setTimeout(() => {
-                const response = {
-                    date: now.format("DD/MM/YYYY H:mm:ss"),
-                    text: "Ok",
-                    status: 'received'
-                }
-                this.contacts[this.activeIndex].messages.push(response);
-            }, 1000);
+
         },
         toggle: function(index) {
             this.msgIndex = index;
